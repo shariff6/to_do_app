@@ -1,5 +1,6 @@
 require ("rspec")
 require("to_do_list")
+require('pg')
 
 describe("#description") do
   it ("lets you read te tasks") do
