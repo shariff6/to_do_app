@@ -9,7 +9,16 @@ require("sinatra")
     @tasks = Task.all()
     erb(:index)
   end
+  get("/lists/new") do
+    erb(:list_form)
+  end
 
+  post("/lists") do
+    name = params.fetch("name")
+    list = List.new({:name => name, :id => nil})
+    list.save()
+    erb(:list_success)
+   end
   post("/tasks") do
     description = params.fetch("description")
     task = Task.new(description)
