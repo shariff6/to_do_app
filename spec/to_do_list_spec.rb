@@ -32,8 +32,8 @@ describe(".clear") do
 end
 describe("#==") do
   it("is the same task if it has the same description") do
-    task1 = Task.new({:description => "learn SQL"})
-    task2 = Task.new({:description => "learn SQL"})
+    task1 = Task.new("learn SQL")
+    task2 = Task.new("learn SQL")
     expect(task1).to(eq(task2))
   end
 end
