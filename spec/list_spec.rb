@@ -19,14 +19,14 @@ require('rspec')
 
     describe("#name") do
       it("tells you its name") do
-        list = List.new({:name => "moringaschool stuff", :id => nil})
+        list = List.new("moringaschool stuff", nil)
         expect(list.name()).to(eq("moringaschool stuff"))
       end
     end
 
     describe("#id") do
       it("sets its ID when you save it") do
-        list = List.new({:name => "moringaschool stuff", :id => nil})
+        list = List.new("moringaschool stuff", nil)
         list.save()
         expect(list.id()).to(be_an_instance_of(Fixnum))
       end
@@ -34,7 +34,7 @@ require('rspec')
 
     describe("#save") do
       it("lets you save lists to the database") do
-        list = List.new({:name => "moringaschool stuff", :id => nil})
+        list = List.new("moringaschool stuff", nil)
         list.save()
         expect(List.all()).to(eq([list]))
       end
@@ -42,8 +42,8 @@ require('rspec')
 
     describe("#==") do
       it("is the same list if it has the same name") do
-        list1 = List.new({:name => "moringaschool stuff", :id => nil})
-        list2 = List.new({:name => "moringaschool stuff", :id => nil})
+        list1 = List.new("moringaschool stuff",nil)
+        list2 = List.new("moringaschool stuff", nil)
         expect(list1).to(eq(list2))
       end
     end

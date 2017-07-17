@@ -1,9 +1,9 @@
 class List
     attr_reader(:name, :id)
 
-    define_method(:initialize) do |attributes|
-      @name = attributes.fetch(:name)
-      @id = attributes.fetch(:id)
+    define_method(:initialize) do |name, id|
+      @name = name
+      @id = id
     end
 
     define_singleton_method(:all) do
@@ -12,7 +12,7 @@ class List
       returned_lists.each() do |list|
         name = list.fetch("name")
         id = list.fetch("id").to_i()
-        lists.push(List.new({:name => name, :id => id}))
+        lists.push(List.new(name, id))
       end
       lists
     end
