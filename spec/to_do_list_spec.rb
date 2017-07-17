@@ -37,4 +37,9 @@ describe("#==") do
     expect(task1).to(eq(task2))
   end
 end
+describe(".all") do
+  it("is empty at first") do
+    expect(Task.all()).to(eq([]))
+  end
+end
 end
