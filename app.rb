@@ -29,3 +29,8 @@ require("sinatra")
     task.save()
     erb(:success)
   end
+  get("/lists/:id") do
+   @list = List.find(params.fetch("id").to_i())
+   erb(:list)
+ end
+ 
