@@ -32,3 +32,14 @@ require('capybara/rspec')
     expect(page).to have_content(test_task.description())
   end
 end
+describe("#tasks") do
+      it("returns an array of tasks for that list") do
+        test_list = List.new("Moringaschool stuff",nil)
+        test_list.save()
+        test_task = Task.new("Learn SQL", test_list.id())
+        test_task.save()
+        test_task2 = Task.new("Review Ruby", test_list.id())
+        test_task2.save()
+        expect(test_list.tasks()).to(eq([test_task, test_task2]))
+      end
+    end
