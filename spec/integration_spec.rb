@@ -3,24 +3,22 @@ require("spec_helper")
   describe('adding a new list', {:type => :feature}) do
     it('allows a user to click a list to see the tasks and details for it') do
       visit('/')
-      click_link('Add New List')
       fill_in('name', :with =>'Moringaschool Work')
-      click_button('Add List')
+      click_button('addList')
       expect(page).to have_content('Success!')
     end
   end
   describe('viewing all of the lists', {:type => :feature}) do
       it('allows a user to see all of the lists that have been created') do
-        list = List.new('Moringaschool Homework')
+        list = List.new('Moringaschool Homework', 1)
         list.save()
         visit('/')
-        click_link('View All Lists')
         expect(page).to have_content(list.name)
       end
     end
     describe('seeing details for a single list', {:type => :feature}) do
   it('allows a user to click a list to see the tasks and details for it') do
-    test_list = List.new('School stuff')
+    test_list = List.new('School stuff', 1)
     test_list.save()
     test_task = Task.new("learn SQL", test_list.id())
     test_task.save()
