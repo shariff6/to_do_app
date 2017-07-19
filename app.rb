@@ -27,6 +27,7 @@ require("sinatra")
     erb(:lists)
   end
   post("/tasks") do
+      @lists = List.all()
       description = params.fetch("description")
       list_id = params.fetch("list_id").to_i()
       @list = List.find(list_id)
