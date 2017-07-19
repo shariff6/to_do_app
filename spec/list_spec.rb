@@ -55,9 +55,9 @@ require "spec_helper"
     end
     describe("#delete") do
       it("lets you delete a list from the database") do
-        list = List.new({:name => "Moringa School stuff", :id => nil})
+        list = List.new("Moringa School stuff", nil)
         list.save()
-        list2 = List.new({:name => "House stuff", :id => nil})
+        list2 = List.new("House stuff", nil)
         list2.save()
         list.delete()
         expect(List.all()).to(eq([list2]))
