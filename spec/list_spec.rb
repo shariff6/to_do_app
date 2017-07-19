@@ -45,4 +45,12 @@ require "spec_helper"
       expect(List.find(test_list2.id())).to(eq(test_list2))
     end
   end
+  describe("#update") do
+      it("lets you update lists in the database") do
+        list = List.new("Moringa School stuff", nil)
+        list.save()
+        list.update("Homework stuff")
+        expect(list.name()).to(eq("Homework stuff"))
+      end
+    end
   end
