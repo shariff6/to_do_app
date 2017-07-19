@@ -36,6 +36,7 @@ require("sinatra")
       erb(:index)
     end
   get("/lists/:id") do
+   @lists = List.all()
    @list = List.find(params.fetch("id").to_i())
    @tasks = Task.all()
    erb(:list)
@@ -50,4 +51,10 @@ require("sinatra")
     @list = List.find(params.fetch("id").to_i())
     @list.update({:name => name})
     erb(:list)
+  end
+  delete("/lists/:id") do
+    @list = List.find(params.fetch("id").to_i())
+    @list.delete()
+    @lists = List.all()
+    erb(:index)
   end
