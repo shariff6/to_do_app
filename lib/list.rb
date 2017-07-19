@@ -45,4 +45,9 @@ define_method(:tasks) do
     end
     list_tasks
   end
+  define_method(:update) do |name|
+    @name = name
+    @id = self.id()
+    DB.exec("UPDATE lists SET name = '#{@name}' WHERE id = #{@id};")
+  end
 end
