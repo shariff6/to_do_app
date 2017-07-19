@@ -40,3 +40,14 @@ require("sinatra")
    @tasks = Task.all()
    erb(:list)
  end
+ get("/lists/:id/edit") do
+    @list = List.find(params.fetch("id").to_i())
+    erb(:list_edit)
+  end
+
+  patch("/lists/:id") do
+    name = params.fetch("name")
+    @list = List.find(params.fetch("id").to_i())
+    @list.update({:name => name})
+    erb(:list)
+  end
