@@ -50,4 +50,7 @@ define_method(:tasks) do
     @id = self.id()
     DB.exec("UPDATE lists SET name = '#{@name}' WHERE id = #{@id};")
   end
+  define_method(:delete) do
+     DB.exec("DELETE FROM lists WHERE id = #{self.id()};")
+   end
 end
